@@ -1,0 +1,37 @@
+{# src/Blogger/BlogBundle/Resources/views/Page/index.html.twig #}
+{% extends 'BloggerBlogBundle::layout.html.twig' %}
+
+{% block body_title %}Главная{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <a class="btn btn-warning center-block" href="{{ path('_security_logout') }}">Выход</a>
+        {% else %}
+            <a class="btn btn-success center-block" href="{{ path('_security_login') }}">Вход</a>
+        {% endif %}
+
+        <hr>
+        <hr>
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <a class="btn btn-success center-block" href="{{ path('blogger_blog_prepod') }}">Редактирование заявок</a>
+        {% else %}
+            <a class="btn btn-success center-block" href="{{ path('blogger_blog_bidd_new') }}">Подать заявку</a>
+        {% endif %}
+
+        <div id="info">
+            <hr>
+            <h3>Установка</h3>
+            <p><b>Создание базы<i>(symfonykrrr)</i>:</b> <i>php bin/console doctrine:database:create</i></p>
+            <p><b>Создание таблиц:</b><br><i>php bin/console doctrine:migrations:diff</i><br><i>php bin/console doctrine:migrations:migrate</i></p>
+            <p><b>Загрузка фикстур:</b> <i>php bin/console doctrine:fixtures:load</i></p>
+            <hr>
+            <h4>После в бд есть одна заявка и один преподаватель</h4>
+            <p>Данные преподавателя:</p>
+            <p><b>Логин:</b> <i>prepod</i></p>
+            <p><b>Пароль:</b> <i>prepod</i></p>
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,44 @@
+_security_login:
+    path:  /login
+    defaults: { _controller: "BloggerBlogBundle:Security:login" }
+
+_security_check:
+    path:  /login_check
+
+_security_logout:
+    path:  /logout
+
+blogger_blog_homepage:
+    path:     /
+    defaults: { _controller: "BloggerBlogBundle:Page:index" }
+
+blogger_blog_prepod:
+    path:     /prepod/
+    defaults: { _controller: "BloggerBlogBundle:Prepod:index" }
+
+blogger_blog_bidd_index:
+    path:     /prepod/bidd/
+    defaults: { _controller: "BloggerBlogBundle:Bidd:index" }
+    methods:  GET
+
+blogger_blog_bidd_show:
+    path:     /prepod/bidd/{id}/show
+    defaults: { _controller: "BloggerBlogBundle:Bidd:show" }
+    methods:  GET
+
+blogger_blog_bidd_edit:
+    path:     /prepod/bidd/{id}/edit
+    defaults: { _controller: "BloggerBlogBundle:Bidd:edit" }
+    methods:  [GET, POST]
+
+blogger_blog_bidd_delete:
+    path:     /prepod/bidd/{id}/delete
+    defaults: { _controller: "BloggerBlogBundle:Bidd:delete" }
+    methods:  DELETE
+
+
+
+blogger_blog_bidd_new:
+    path:     /new
+    defaults: { _controller: "BloggerBlogBundle:Bidd:new" }
+    methods:  [GET, POST]

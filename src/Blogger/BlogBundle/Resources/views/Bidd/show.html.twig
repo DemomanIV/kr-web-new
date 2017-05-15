@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>Заявка</h1>
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ bidd.id }}</td>
+                </tr>
+                <tr>
+                    <th>ФИО</th>
+                    <td>{{ bidd.fio }}</td>
+                </tr>
+                <tr>
+                    <th>Оценка 1</th>
+                    <td>{{ bidd.mark1 }}</td>
+                </tr>
+                <tr>
+                    <th>Оценка 2</th>
+                    <td>{{ bidd.mark2 }}</td>
+                </tr>
+                <tr>
+                    <th>Оценка 3</th>
+                    <td>{{ bidd.mark3 }}</td>
+                </tr>
+                <tr>
+                    <th>Специальность</th>
+                    <td>{{ bidd.specialty.title }}</td>
+                </tr>
+                <tr>
+                    <th>Подтверждённость оценок</th>
+                    {% if bidd.check1 == true %}
+                        <td>Да</td>
+                    {% else %}
+                        <td>Нет</td>
+                    {% endif %}
+                </tr>
+            </tbody>
+        </table>
+
+        <hr>
+
+        {{ form_start(delete_form) }}
+        <input class="btn btn-success" type="submit" value="Удалить">
+        <a class="btn btn-success" href="{{ path('blogger_blog_bidd_edit', { 'id': bidd.id }) }}">Редактировать</a>
+        {{ form_end(delete_form) }}
+
+
+        <hr>
+        <h3><a href="{{ path('blogger_blog_bidd_index') }}">Назад к списку заявок</a></h3>
+
+    </div>
+{% endblock %}

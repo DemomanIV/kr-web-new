@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>Заявки</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>ФИО</th>
+                    <th>Оценка 1</th>
+                    <th>Оценка 2</th>
+                    <th>Оценка 3</th>
+                    <th>Специальность</th>
+                    <th>Редактирование</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for bidd in bidds %}
+                <tr>
+                    <td><a href="{{ path('blogger_blog_bidd_show', { 'id': bidd.id }) }}">{{ bidd.id }}</a></td>
+                    <td>{{ bidd.fio }}</td>
+                    <td>{{ bidd.mark1 }}</td>
+                    <td>{{ bidd.mark2 }}</td>
+                    <td>{{ bidd.mark3 }}</td>
+                    <td>{{ bidd.specialty.title }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('blogger_blog_bidd_show', { 'id': bidd.id }) }}">Просмотреть</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('blogger_blog_bidd_edit', { 'id': bidd.id }) }}">Редактировать</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <hr>
+        <h3><a href="{{ path('blogger_blog_prepod') }}">Назад в панель преподавателя</a></h3>
+    </div>
+{% endblock %}
